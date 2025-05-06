@@ -1,0 +1,19 @@
+id: 04_schedule_your_workflow_with_triggers
+namespace: zoomcamp.kestra_tutorial_2024
+
+tasks:
+  - id: hello
+    type: io.kestra.plugin.core.log.Log
+    message: Hello World! 🚀
+
+triggers:
+  - id: schedule_trigger
+    type: io.kestra.plugin.core.trigger.Schedule
+    cron: "*/1 * * * 1-5"
+  - id: flow_trigger
+    type: io.kestra.plugin.core.trigger.Flow
+    conditions:
+      - type: io.kestra.plugin.core.condition.ExecutionFlow
+        namespace: zoomcamp.kestra_tutorial_2024
+        flowId: first_flow
+

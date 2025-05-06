@@ -1,0 +1,15 @@
+id: 03_pass_data_between_tasks_with_outputs
+namespace: zoomcamp.kestra_tutorial_2024
+
+inputs:
+  - id: api_url
+    type: STRING
+    defaults: https://dummyjson.com/products
+
+tasks:
+  - id: api
+    type: io.kestra.plugin.fs.http.Request
+    uri: "{{ inputs.api_url }}"
+  - id: log_response
+    type: io.kestra.plugin.core.log.Log
+    message: "{{ outputs.api.body }}"

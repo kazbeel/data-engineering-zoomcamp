@@ -1,0 +1,15 @@
+# Source video: https://www.youtube.com/watch?v=qrmEh-0BILg
+
+id: 02_pass_data_into_your_workflows_with_inputs
+namespace: zoomcamp.kestra_tutorial_2024
+
+inputs:
+  - id: user
+    type: STRING
+    defaults: kazbeel
+
+tasks:
+  - id: hello
+    type: io.kestra.plugin.core.log.Log
+    message: Hey there, {{ inputs.user }}
+

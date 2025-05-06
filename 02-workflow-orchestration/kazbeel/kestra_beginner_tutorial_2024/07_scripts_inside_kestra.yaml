@@ -1,0 +1,10 @@
+id: 07_scripts_inside_kestra
+namespace: zoomcamp.kestra_tutorial_2024
+
+tasks:
+  - id: custom_image
+    type: io.kestra.plugin.scripts.python.Script
+    docker:
+      image: ghcr.io/kestra-io/pydata:latest
+    script:
+      print("this runs using a private container image")
